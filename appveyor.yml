@@ -3,6 +3,7 @@ image:
 clone_folder: c:\projects\source
 build_script:
 - cmd: >-
+    rm -rf build
     mkdir build
     cd build
     
