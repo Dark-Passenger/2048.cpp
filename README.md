@@ -5,6 +5,8 @@ Made with <span style="color:#e25555;">❤</span> in India
 
 [![Build Status](https://travis-ci.com/Dark-Passenger/2048.cpp.svg?branch=master)](https://travis-ci.com/Dark-Passenger/2048.cpp)
 
+[![Build status](https://ci.appveyor.com/api/projects/status/8208hcyfil9a2sut?svg=true)](https://ci.appveyor.com/project/Dark-Passenger/2048-cpp)
+
 > Console version of the game "2048" written in C++.
 >
 > Ability to save scores, choose board size and view statistics!
