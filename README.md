@@ -1,7 +1,6 @@
 # 2048.cpp
 
-<style>.heart{color:#e25555;}</style>
-Made with <span class="heart">❤</span> in India
+Made with <span style="color:#e25555;">❤</span> in India
 
 > Console version of the game "2048" written in C++.
 >
