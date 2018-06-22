@@ -2,7 +2,7 @@
 
 [![Made with Love in India](https://madewithlove.org.in/badge.svg)](https://madewithlove.org.in/)
 
-> Console version of the game "2048" for GNU/Linux written in C++.
+> Console version of the game "2048" written in C++.
 >
 > Ability to save scores, choose board size and view statistics!
 
@@ -11,15 +11,13 @@
 ## To-Do:
 - [x] Add start menu [19/04/2018]
 - [x] Save highscore / score [21/04/2018]
-- [ ] ~~Save a game state and play from a saved game state~~ *(Abandoned indefinitely)*
+- [ ] Move to c++17
+- [ ] Save a game state into a file and load and play from saved state.
 - [ ] ~~AI~~ *(Abandoned indefinitely)*
 
-## Setup Instructions
-The game and code is natively made to run on the GNU/Linux platform, but cross-platform compatibility for Windows has been added too.
-
 ### Requirements:
-* g++ or gcc compiler
-* Linux, macOS OR Windows with a working terminal (Cygwin or Git bash is recommended for Windows)
+* a mordern version of gcc or msvc (2017 or above).
+* Linux, macOS or Windows (cygwin or git bash) with a working terminal.
 
 ### Instructions:
 1. Open your terminal in your preferred directory and clone this project:
@@ -34,13 +32,17 @@ $ cd 2048.cpp
 ```bash
 $ mkdir build
 ```
+4. generate the MakeFile:
+```bash
+$ cmake ..
+```
 4. Compile the `2048.cpp` file and create an output using the Makefile:
 ```bash
 $ make
 ```
 5. Run the program and play the game!
 ```bash
-$ ./build/2048.out
+$ ./build/2048
 ```
 
 ## Notes:
