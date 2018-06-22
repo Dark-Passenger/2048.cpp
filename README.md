@@ -1,6 +1,6 @@
 # 2048.cpp
 
-Made with <span style="color:#e25555;">❤</span> in India
+Made with <span style="color:#e25555;">❤</span> in India                                   [![Build Status](https://travis-ci.com/Dark-Passenger/2048.cpp.svg?branch=master)](https://travis-ci.com/Dark-Passenger/2048.cpp)
 
 > Console version of the game "2048" written in C++.
 >
