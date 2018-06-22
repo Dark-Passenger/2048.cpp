@@ -57,10 +57,16 @@ void clearScreen() {
 };
 
 std::ostream &bold_on(std::ostream &os) {
+#ifdef _MSC_VER
+#pragma warning (disable: 4129)
+#endif
     return os << "\e[1m";
 }
 
 std::ostream &bold_off(std::ostream &os) {
+#ifdef _MSC_VER
+#pragma warning (disable: 4129)
+#endif
     return os << "\e[0m";
 }
 

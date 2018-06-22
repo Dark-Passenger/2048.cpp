@@ -31,7 +31,7 @@ class Tile {
 
 };
 
-Color::Modifier Tile::tileColor(ull value) {
+Color::Modifier Tile::tileColor(ull color) {
     std::vector<Color::Modifier> colors{
         red,
         yellow,
@@ -45,7 +45,7 @@ Color::Modifier Tile::tileColor(ull value) {
         blue,
         green
     };
-    int log = log2(value);
+    auto log = static_cast<int>(log2(color));
     int index = log < 12 ? log - 1 : 10;
 
     return colors[index];
@@ -299,7 +299,7 @@ void Game::decideMove(Directions d) {
         case DOWN:
 
             for (int x = 0; x < BOARD_SIZE; x++) {
-                int y = BOARD_SIZE - 2;
+                auto y = static_cast<int>(BOARD_SIZE - 2);
                 while (y >= 0) {
                     if (board[y][x].value) {
                         move(y, x, 1, 0);
@@ -325,7 +325,7 @@ void Game::decideMove(Directions d) {
         case RIGHT:
 
             for (int y = 0; y < BOARD_SIZE; y++) {
-                int x = BOARD_SIZE - 2;
+                auto x = static_cast<int>(BOARD_SIZE - 2);
                 while (x >= 0) {
                     if (board[y][x].value) {
                         move(y, x, 0, 1);
@@ -343,8 +343,8 @@ void Game::move(int y, int x, int k, int l) {
     Tile &currentTile = board[y][x];
     Tile &targetTile = board[y + k][x + l];
 
-    int A = currentTile.value;
-    int B = targetTile.value;
+    ull A = currentTile.value;
+    ull B = targetTile.value;
     int C = currentTile.blocked;
     int D = targetTile.blocked;
 

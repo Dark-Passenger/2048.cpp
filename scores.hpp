@@ -18,9 +18,9 @@ struct Score {
     double duration;
 };
 
-bool compare(const Score &a, const Score &b) {
-    return a.score < b.score;
-};
+bool operator < (const Score&lhs, const Score &rhs) {
+  return lhs.score < rhs.score;
+}
 
 class Scoreboard {
     private:
@@ -32,9 +32,9 @@ class Scoreboard {
         void padding(std::string name);
 
     public:
-        ull score = 0;
+        unsigned long long score = 0;
         bool win;
-        ull largestTile;
+        unsigned long long largestTile;
         long long moveCount;
         double duration;
         void printScore();
@@ -66,16 +66,11 @@ void Scoreboard::printScore() {
     std::cout << green << bold_on << "  SCOREBOARD" << bold_off << def; endl();
     std::cout << green << bold_on << "  ----------" << bold_off << def; endl(2);
 
-    int size = scoreList.size();
+    std::size_t size = scoreList.size();
 
-    for (int i = size - 1; i >= 0; i--) {
-
-        std::string playerName = scoreList[i].name;
-        ull playerScore = scoreList[i].score;
-        std::string won = scoreList[i].win ? "Yes" : "No";
-        long long moveCount = scoreList[i].moveCount;
-        ull largestTile = scoreList[i].largestTile;
-        double duration = scoreList[i].duration;
+    for (std::size_t i = size - 1; i >= 0; --i) {
+      const auto& player = scoreList[i];
+      std::string won = player.win ? "Yes" : "No";
 
         if (i == size - 1) {
             std::cout << "  +-----+--------------------+----------+------+-------+--------------+--------------+"; endl();
@@ -91,14 +86,13 @@ void Scoreboard::printScore() {
         }
 
         std::cout << "  | " << std::setw(2) << size - i << ". | " 
-                            << playerName; padding(playerName);
-        std::cout << " | " << std::setw(8) << playerScore << " | "
+                            << player.name; padding(player.name);
+        std::cout << " | " << std::setw(8) << player.score << " | "
                             << std::setw(4) << won << " | "
-                            << std::setw(5) << moveCount << " | "
-                            << std::setw(12) << largestTile << " | "
-                            << std::setw(12) << duration << " | ";
+                            << std::setw(5) << player.moveCount << " | "
+                            << std::setw(12) << player.largestTile << " | "
+                            << std::setw(12) << player.duration << " | ";
         endl();
-
     }
 
     if (!size) {
@@ -136,9 +130,9 @@ void Scoreboard::printStats() {
 
 }
 
-void Scoreboard::padding(std::string name) {
+void Scoreboard::padding(std::string str) {
 
-    int length = name.length();
+    int length = str.length();
     while (18 - length++) {
         std::cout << " ";
     }
@@ -151,26 +145,26 @@ void Scoreboard::readFile() {
 
     std::string playerName;
     ull playerScore;
-    bool win;
-    ull largestTile;
-    long long moveCount;
-    double duration;
+    bool playerStatus;
+    ull playerLargestTile;
+    long long playerMoveCount;
+    double playerDuration;
 
-    while (scores >> playerName >> playerScore >> win >> moveCount >> largestTile >> duration) {
+    while (scores >> playerName >> playerScore >> playerStatus >> playerMoveCount >> playerLargestTile >> playerDuration) {
 
         Score bufferScore;
         bufferScore.name = playerName;
         bufferScore.score = playerScore;
-        bufferScore.win = win;
-        bufferScore.largestTile = largestTile;
-        bufferScore.moveCount = moveCount;
-        bufferScore.duration = duration;
+        bufferScore.win = playerStatus;
+        bufferScore.largestTile = playerLargestTile;
+        bufferScore.moveCount = playerMoveCount;
+        bufferScore.duration = playerDuration;
 
         scoreList.push_back(bufferScore);
 
     };
 
-    std::sort(scoreList.begin(), scoreList.end(), compare);
+    std::sort(scoreList.begin(), scoreList.end());
 
 }
 
