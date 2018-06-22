@@ -1,8 +1,7 @@
 # 2048.cpp
 
-[![Made with Love in India](https://madewithlove.org.in/badge.svg)](https://madewithlove.org.in/)
 <style>.heart{color:#e25555;}</style>
-Made with <span class="heart">❤</span> in Switzerland
+Made with <span class="heart">❤</span> in India
 
 > Console version of the game "2048" written in C++.
 >
