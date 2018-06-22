@@ -19,5 +19,5 @@ else()
 endif()
 
 add_executable(2048 main.cpp)
-set (CMAKE_CXX_STANDARD 11)
+target_compile_features(2048 PRIVATE cxx_std_17)
 target_link_libraries(2048 PRIVATE project_warnings)
